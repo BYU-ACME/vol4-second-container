@@ -20,6 +20,11 @@ COPY requirements.txt /tmp/requirements.txt
 RUN pip install --no-cache-dir -r /tmp/requirements.txt
 
 # Universal Dependencies
+# cvxopt prevents warnings for various optimization routines in packages
+# ipykernel is needed for the Jupyter kernel
+# flake8 is needed for linting
+# pytest, pytest-cov, coverage, ipython are helpful for testing and debugging
+# matplotlib, numpy, pandas are required for grading (and in nearly all labs)
 RUN pip install --no-cache-dir \
     cvxopt~=1.3.2 \
     ipykernel~=6.29.5 \
@@ -27,7 +32,10 @@ RUN pip install --no-cache-dir \
     pytest~=7.4.4 \
     pytest-cov~=6.2.1 \
     ipython~=9.4.0 \
-    coverage~=7.9.2
+    coverage~=7.9.2 \
+    matplotlib~=3.10.3 \
+    numpy~=2.3.2 \
+    pandas~=2.3.1
     
 
 ########################  CONFIGURE GIT ########################
