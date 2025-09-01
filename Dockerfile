@@ -1,6 +1,6 @@
 ########################  BASE PYTHON  ########################
 # Leave this unpinned for now, JAX will only work with the OS that pinned it
-FROM python:3.13-slim
+FROM python:3.13.5-slim
 
 
 ########################  SYSTEM PACKAGES  ###################
@@ -11,6 +11,7 @@ RUN apt-get update && \
         libgl1 libglib2.0-0 \
         ffmpeg \
         git unzip sudo \
+        vim nano \
     && rm -rf /var/lib/apt/lists/*
 
 
