@@ -14,6 +14,8 @@ RUN apt-get update && \
         wget \
         man-db less groff-base \
         procps \
+        graphviz \
+        graphviz fontconfig fonts-dejavu-core \
     && rm -rf /var/lib/apt/lists/*
 
 
