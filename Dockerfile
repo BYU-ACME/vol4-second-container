@@ -3,8 +3,10 @@ FROM python:3.13.5-slim
 
 
 ########################  SYSTEM PACKAGES  ###################
+ENV TZ=America/Denver
 RUN apt-get update && \
     DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
+        tzdata \
         build-essential cmake \
         libblas-dev liblapack-dev \
         libgl1 libglib2.0-0 \
@@ -14,8 +16,9 @@ RUN apt-get update && \
         wget \
         man-db less groff-base \
         procps \
-        graphviz \
         graphviz fontconfig fonts-dejavu-core \
+    && ln -snf /usr/share/zoneinfo/$TZ /etc/localtime \
+    && echo $TZ > /etc/timezone \
     && rm -rf /var/lib/apt/lists/*
 
 
@@ -36,6 +39,7 @@ RUN pip install --no-cache-dir \
     ipykernel~=6.29.5 \
     jupyter~=1.1.1 \
     flake8~=7.3.0 \
+    nbqa~=1.9.1 \
     pytest~=7.4.4 \
     pytest-cov~=6.2.1 \
     ipython~=9.4.0 \
